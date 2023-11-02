@@ -36,12 +36,73 @@ namespace TaskCopyger
             textBox1.Text = string.Empty;
             String startingText = textBox2.Text;
             String basicText = string.Format(FORMAT, "Name", "PID", "Threads") + Environment.NewLine;
-            
+
             threads.Where(item => item.ProcessName.StartsWith(startingText)).ToList().ForEach(item =>
             {
                 textBox1.Text += string.Format(FORMAT, Regex.Replace(item.ProcessName.ToString(), "(?<=^.{15}).*", "..."),
                     item.Id.ToString(), item.Threads.Count.ToString()) + "\t" + Environment.NewLine;
             });
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = string.Empty;
+            String startingText = textBox2.Text;
+            foreach (Process p in threads)
+            {
+                if (startingText == p.Id.ToString())
+                {
+                    
+                }
+
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = string.Empty;
+            String startingText = textBox2.Text;
+            foreach (Process p in threads)
+            {
+                if (startingText == p.Id.ToString())
+                {
+                    p.CloseMainWindow();
+                    textBox1.Text = p.Id.ToString() + " has been succesfully closed";
+                }
+
+            }
+        }
+        //TODO control excepciones, manifest, 64 bits
+        private void button4_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = string.Empty;
+            String startingText = textBox2.Text;
+            foreach (Process p in threads)
+            {
+                if (startingText == p.Id.ToString())
+                {
+                    p.Kill();
+                    textBox1.Text = p.Id.ToString() + " has been succesfully killed";
+                }
+
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = string.Empty;
+            String startingText = textBox2.Text;
+            foreach (Process p in threads)
+            {
+                
+
+            }
+        }
+
     }
 }
